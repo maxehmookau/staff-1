@@ -4,5 +4,6 @@ FactoryGirl.define do
   factory :employee do
     first_name "Rich"
     last_name "Hickey"
+    email "bossman@clojure.org"
   end
 end

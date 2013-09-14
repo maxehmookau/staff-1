@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class EmployeeTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  it 'should be valid' do
+    employee = build(:employee)
+    employee.must_be :valid?
+  end
 end

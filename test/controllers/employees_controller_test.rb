@@ -1,22 +1,23 @@
 require 'test_helper'
 
 class EmployeesControllerTest < ActionController::TestCase
+  
   setup do
-    @employee = employees(:one)
+    @employee = create(:employee)
   end
 
-  test "should get index" do
+  it "should get index" do
     get :index
     assert_response :success
     assert_not_nil assigns(:employees)
   end
 
-  test "should get new" do
+  it "should get new" do
     get :new
     assert_response :success
   end
 
-  test "should create employee" do
+  it "should create employee" do
     assert_difference('Employee.count') do
       post :create, employee: { email: @employee.email, first_name: @employee.first_name, last_name: @employee.last_name, phone: @employee.phone, website: @employee.website }
     end
@@ -24,22 +25,22 @@ class EmployeesControllerTest < ActionController::TestCase
     assert_redirected_to employee_path(assigns(:employee))
   end
 
-  test "should show employee" do
+  it "should show employee" do
     get :show, id: @employee
     assert_response :success
   end
 
-  test "should get edit" do
+  it "should get edit" do
     get :edit, id: @employee
     assert_response :success
   end
 
-  test "should update employee" do
+  it "should update employee" do
     patch :update, id: @employee, employee: { email: @employee.email, first_name: @employee.first_name, last_name: @employee.last_name, phone: @employee.phone, website: @employee.website }
     assert_redirected_to employee_path(assigns(:employee))
   end
 
-  test "should destroy employee" do
+  it "should destroy employee" do
     assert_difference('Employee.count', -1) do
       delete :destroy, id: @employee
     end

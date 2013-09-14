@@ -5,6 +5,14 @@ class EmployeesControllerTest < ActionController::TestCase
   setup do
     @employee = create(:employee)
   end
+  
+  def employee_attributes
+    { email: @employee.email, 
+      first_name: @employee.first_name, 
+      last_name: @employee.last_name, 
+      phone: @employee.phone, 
+      website: @employee.website }
+  end
 
   it "should get index" do
     get :index
@@ -19,7 +27,7 @@ class EmployeesControllerTest < ActionController::TestCase
 
   it "should create employee" do
     assert_difference('Employee.count') do
-      post :create, employee: { email: @employee.email, first_name: @employee.first_name, last_name: @employee.last_name, phone: @employee.phone, website: @employee.website }
+      post :create, employee: employee_attributes
     end
 
     assert_redirected_to employee_path(assigns(:employee))
@@ -36,7 +44,7 @@ class EmployeesControllerTest < ActionController::TestCase
   end
 
   it "should update employee" do
-    patch :update, id: @employee, employee: { email: @employee.email, first_name: @employee.first_name, last_name: @employee.last_name, phone: @employee.phone, website: @employee.website }
+    patch :update, id: @employee, employee: employee_attributes
     assert_redirected_to employee_path(assigns(:employee))
   end
 
